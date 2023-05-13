@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3>{{ question.number_of_question }} {{ question.text }}</h3>
+  <form action="" method="post">
+  {% csrf_token %}
+  {% for answer in answers %}
+    <label for="answer">{{ answer.text }}</label>
+    <input type="radio" name="answer" id="answer" value="{{ answer.id }}">
+  {% endfor %}
+  <button type="submit" name="save">Сохранить</button>
+  </form>
+  <a href="{% url 'end_test_page' test_id session_id %}">Завершить тест</a><br>
+{% if question.number_of_question != 1 %}
+  <a href="{% url 'question_page' test_id session_id question.id|add:'-1' %}">Предыдущий вопрос</a>
+{% endif %}
+{% if question.number_of_question != counter %}
+  <a href="{% url 'question_page' test_id session_id question.id|add:'1' %}">Следующий вопрос</a>
+{% endif %}
+{% endblock %}

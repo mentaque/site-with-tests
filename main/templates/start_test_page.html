@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if not session %}
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" name="starting">Начать тест</button>
+</form>
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" name="continue">Продолжить тест</button>
+</form>
+{% endif %}
+{% endblock %}

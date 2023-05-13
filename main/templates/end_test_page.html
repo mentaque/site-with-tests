@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for question in questions %}
+  <a href="{% url 'question_page' test_id session_id question.id %}">{{ question.text }}</a>
+  {% for answer in answers %}
+    {% if answer.question.text == question.text %}
+      <span>- Сохранено</span>
+    {% endif %}
+  {% endfor %}
+  <br>
+  {% endfor %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" name="ending">Завершить тест</button>
+  </form>
+{% endblock %}
