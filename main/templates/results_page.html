@@ -2,7 +2,7 @@
 
 {% block content %}
   {% for result in results %}
-    <span>{{ result.id }}: {{ result.right_answers }}/{{ result.all_questions }}</span>
+    <span>{{ result.right_answers }}/{{ result.all_questions }}</span>
     <hr>
   {% endfor %}
 {% endblock %}
